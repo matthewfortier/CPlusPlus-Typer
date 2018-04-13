@@ -1,0 +1,16 @@
+{
+    "files.associations": {
+        "sstream": "cpp",
+        "iosfwd": "cpp",
+        "streambuf": "cpp",
+        "__locale": "cpp",
+        "__bit_reference": "cpp",
+        "algorithm": "cpp",
+        "bitset": "cpp",
+        "chrono": "cpp",
+        "hash_map": "cpp",
+        "hash_set": "cpp",
+        "map": "cpp",
+        "set": "cpp"
+    }
+}
