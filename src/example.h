@@ -15,3 +15,5 @@ double subtract_numbers(const double f1, const double f2);
 double multiply_numbers(const double f1, const double f2);
 
 vector<string> explode(const string &str, const char &ch);
+
+void reverseStr(string &str);
