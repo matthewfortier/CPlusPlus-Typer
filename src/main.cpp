@@ -6,44 +6,10 @@
 //  Copyright © 2018 Matthew Fortier. All rights reserved.
 //
 
-#include <iostream>
-#include <string>
-#include <fstream>
-#include <streambuf>
-#include <vector>
-#include <sstream>
+#include <cstdlib>
+#include <stdio.h>
 #include "example.h"
 using namespace std;
-
-vector<string> explode(const string &str, const char &ch)
-{
-    string next;
-    vector<string> result;
-
-    // For each character in the string
-    for (string::const_iterator it = str.begin(); it != str.end(); it++)
-    {
-        // If we've hit the terminal character
-        if (*it == ch)
-        {
-            // If we have some characters accumulated
-            if (!next.empty())
-            {
-                // Add them to the result vector
-                result.push_back(next);
-                next.clear();
-            }
-        }
-        else
-        {
-            // Accumulate the next character into the sequence
-            next += *it;
-        }
-    }
-    if (!next.empty())
-        result.push_back(next);
-    return result;
-}
 
 int main(int argc, const char *argv[])
 {
@@ -61,33 +27,48 @@ int main(int argc, const char *argv[])
 
         std::vector<std::string> result = explode(str, ' ');
 
-        cout << add_numbers(2.0, 4.0) << endl;
-
         int count = 0;
-        while (count < result.size())
+        int errors = 0;
+
+        int start = clock();
+        double diff;
+        do
         {
+            // do stuff
+            diff = (clock() - start) / (double)(CLOCKS_PER_SEC);
+            cout << diff << endl;
+
+            cout << endl;
+            cout << endl;
             cout << result[count] << endl;
             string answer;
-            getline(cin, answer);
+            cin >> answer;
 
             if (result[count] != answer)
+            {
+                errors++;
                 continue;
+            }
 
             count++;
-        }
+
+            system("cls");
+            system("clear");
+
+            cout << "Errors: " << errors << endl;
+
+            for (int i = 0; i < count; i++)
+            {
+                cout << result[i] << " ";
+            }
+            cout << endl;
+
+        } while (diff < 0.005000);
     }
     else
     {
         cout << "Fail" << endl;
     }
-
-    //    stringstream ss(str);
-    //    istream_iterator<std::string> begin(ss);
-    //    istream_iterator<std::string> end;
-    //    vector<std::string> vstrings(begin, end);
-    //    std::copy(vstrings.begin(), vstrings.end(), std::ostream_iterator<std::string>(std::cout, "\n"));
-    //
-    //    cout << str << endl;
 
     return 0;
 }
